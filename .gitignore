@@ -1,0 +1,5 @@
+node_modules/
+*.tgz
+.pack-check/
+.github-token
+.env

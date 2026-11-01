@@ -1,0 +1,16 @@
+# dsh-synapse-lens extends the Web profile: it reuses the existing DSH server
+# and adds per-node insight panels to the dsh-synapse canvas.
+- insert:
+    - id: synapse
+      name: dsh-synapse-lens
+      config:
+        # A profile can override this path in its own cordis.patch.yml.
+        dataFile: !!js dshHomePath('synapse/workspaces.json')
+        autoProjection: true
+        projectionWorkspaceTitle: DSH 任务
+        # Model pass for the retrospective (goal condensation, step impact,
+        # prompt coaching). Set false to keep the rule-only report.
+        llmReview: true
+        # Extra authorities the /synapse Host check accepts (host or host:port);
+        # localhost and 127.0.0.1 are always allowed.
+        trustedHosts: []

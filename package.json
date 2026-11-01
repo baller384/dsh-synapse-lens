@@ -1,0 +1,53 @@
+{
+  "name": "dsh-synapse-lens",
+  "version": "0.10.0",
+  "description": "A visual, non-linear conversation workspace for DeepSeek Harness with per-node insight panels, card numbering, soft-retraction context guards, hard context cuts, and a rule+model single-session retrospective.",
+  "type": "module",
+  "main": "index.js",
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client.js",
+    "./insight": "./insight.js",
+    "./retrospective": "./retrospective.js",
+    "./llm-review": "./llm-review.js",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "index.js",
+    "insight.js",
+    "retrospective.js",
+    "llm-review.js",
+    "client.js",
+    "app.js",
+    "deepseek-mark.svg",
+    "styles.css",
+    "docs",
+    "cordis.patch.yml",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "node --check index.js && node --check insight.js && node --check retrospective.js && node --check llm-review.js && node --check client.js && node --check app.js",
+    "test": "node --test test/*.test.js"
+  },
+  "engines": {
+    "node": ">=22.19.0"
+  },
+  "license": "MIT",
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": [
+        "@deepseek-ai/dsh-api-session-controller",
+        "@deepseek-ai/dsh-api-workspace-controller",
+        "@deepseek-ai/dsh-client-ui-conversation",
+        "@deepseek-ai/dsh-client-ui-workspace"
+      ],
+      "immediately": false
+    }
+  }
+}
